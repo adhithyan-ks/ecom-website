@@ -5,7 +5,6 @@ import { getProduct } from "../controllers/user.controller.js";
 const router = express();
 
 router.get("/all-products", getAllProducts);
-
 router.get("/product/:id", getProduct);
 
 export default router;
