@@ -4,9 +4,9 @@ export const getAllProducts = async(req, res) => {
     try {
         const allProducts = await Product.find();
         if(!allProducts) {
-            return res.json({success: false, message: "No products found!"});
+            return res.status(404).json({success: false, message: "No products found!"});
         }
-        res.json({success: true, message: "Products found", total: allProducts.length, products: allProducts});
+        res.status(200).json({success: true, message: "Products found", total: allProducts.length, products: allProducts});
     }
     catch (error) {
         console.log(error);
@@ -20,9 +20,9 @@ export const getProduct = async(req, res) => {
     try {
         const product = await Product.findById(id);
         if(!product) {
-            return res.json({success: false, message: "Product was not foound!"});
+            return res.status(404).json({success: false, message: "Product was not foound!"});
         }
-        return res.json({success: true, message: "Product found", product: product});
+        return res.status(200).json({success: true, message: "Product found", product: product});
     }
     catch (error) {
         console.log(error);
