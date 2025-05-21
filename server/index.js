@@ -25,9 +25,6 @@ mongoose
 
 app.use(express.json());
 app.use(cookieparser());
-
 app.use("/api/auth", authRoutes);
-
 app.use("/api/admin", adminRoutes);
-
 app.use("/api/user", userRoutes);
