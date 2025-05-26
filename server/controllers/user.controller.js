@@ -65,7 +65,9 @@ export const addToCart = async(req, res) => {
             }, 0);
         }
         await cart.save();
+
         res.status(200).json({ success: true, message: "Product added to cart succcessfully", cart});
+        
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: "Internal Server Error" });
