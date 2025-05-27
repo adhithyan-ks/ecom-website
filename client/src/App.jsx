@@ -4,11 +4,11 @@ import SignUpPage from "./pages/SignUpPage";
 
 const App = () => {
   return (
-    <UserProvideer>
+    
       <Routes>
-        <Route path="/sign-up" element={<SignUpPage/>}></Route>
+        <Route path="/sign-up" element={<SignUpPage />}></Route>
       </Routes>
-    </UserProvideer>
+    
   )
 }
 export default App;
