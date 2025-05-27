@@ -53,7 +53,7 @@ const SignUpPage = () => {
         <div className="flex justify-center items-center min-h-screen bg-gray-100">
             <form
                 onSubmit={handleSubmit}
-                className="w-full max-w-sm bg-white rounded-lg shadow-md p-6 space-y-4" // Corrected -y-4 to space-y-4
+                className="w-full max-w-sm bg-white rounded-lg shadow-md p-6 -y-4" // Corrected -y-4 to space-y-4
             >
                 <h1 className="text-2xl font-bold text-center text-gray-800">Create Your Account</h1>
                 {/* Firstname */}
