@@ -115,7 +115,7 @@ const SignUpPage = () => {
                         className={`mt-2 w-full py-2 text-white rounded-md shadow-md font-semibold ${
                             loading
                                 ? "bg-gray-400 cursor-not-allowed" // Added cursor-not-allowed
-                                : "bg-orange-400 hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" // Corrected focus-ring to focus:ring
+                                : "bg-orange-400 hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500" // Corrected focus-ring to focus:ring
                         }`}
                     >
                         {loading ? "Signing up..." : "Sign up"}

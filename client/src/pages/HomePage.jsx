@@ -5,7 +5,7 @@ const HomePage = () => {
 
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100">
-            {/* <Header /> */}
+            {/* <Header /> */}      
             <Footer />
         </div>
     )
