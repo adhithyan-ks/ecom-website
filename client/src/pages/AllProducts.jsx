@@ -10,7 +10,7 @@ const All = () => {
                 const response = await fetch("/api/user/all-products");
                 if(response.ok) {
                     const data = await response.json();
-                    console.log("Data:", data);
+                    console.log("Data:", data); // Logs data
                     setProducts(data.allProducts);
                 }
             } catch (error) {
@@ -18,7 +18,8 @@ const All = () => {
             }
         }
         getProducts();
-    }, [])
+    }, []);
+
     console.log("Products:", products);
 
     return (
