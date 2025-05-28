@@ -112,10 +112,10 @@ const SignUpPage = () => {
                     <button
                         type="submit"
                         disabled={loading}
-                        className={`w-full py-2 text-white rounded-md shadow-md font-semibold ${
+                        className={`mt-2 w-full py-2 text-white rounded-md shadow-md font-semibold ${
                             loading
                                 ? "bg-gray-400 cursor-not-allowed" // Added cursor-not-allowed
-                                : "bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" // Corrected focus-ring to focus:ring
+                                : "bg-orange-400 hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" // Corrected focus-ring to focus:ring
                         }`}
                     >
                         {loading ? "Signing up..." : "Sign up"}
@@ -135,7 +135,7 @@ const SignUpPage = () => {
                 {/* Footer */}
                 <div className="text-center text-sm text-gray-600">
                     Already Have an Account? {""}
-                    <a href='/sign-in' className="text-indigo-600 hover:text-indigo-500 font-medium">Sign in</a>
+                    <a href='/sign-in' className="text-orange-600 hover:text-orange-500 font-medium">Sign in</a>
                 </div>
             </form>
         </div>
