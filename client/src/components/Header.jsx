@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useUser } from "../context/user.context";
 
 const Header = () => {
     const { user, signOut } = useUser();
