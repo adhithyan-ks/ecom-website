@@ -35,7 +35,7 @@ const SignInPage = () => {
             // Handle server-side errors or success messages
             if (res.ok) { // Check if the response status is in the 200s
                 setMessage(data.message || "Sign-up successful!");
-                navigate("/home");
+                navigate("/");
             } else {
                 setMessage(data.message || "Sign-up failed. Please try again.");
             }
