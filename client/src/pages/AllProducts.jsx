@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const All = () => {
     const [ products, setProducts ] = useState([]);
@@ -10,8 +12,8 @@ const All = () => {
                 const response = await fetch("/api/user/all-products");
                 if(response.ok) {
                     const data = await response.json();
-                    console.log("Data:", data); // Logs data
-                    setProducts(data.allProducts);
+                    // console.log("Data:", data); // Logs data
+                    setProducts(data.products);
                 }
             } catch (error) {
                 console.log(error);
@@ -24,13 +26,14 @@ const All = () => {
 
     return (
         <div>
-            <h1>All Products</h1>
+            <Header />
+            <h1 className="text-2xl font-bold text-center text-gray-800">All Products</h1>
             { products.length > 0 ? (
                 <div style = {{ width: "100vw", display: "flex", gap: "20px" }}>
                     { products.map( (p) => (
                         <div style={{ width: "300px", height: "400px", border: "2px solid black", borderRadius: "25px" }}>
                             <Link to={ `/product/${p._id}` }>
-                                <img src={p.image} alt="image-photo" />
+                                <img style={{ width: "100%", borderRadius: "25px" }} src={p.image} alt="image-photo" />
                             </Link>
                             <h2>{ p.title }</h2>
                             <p>{ p.description }</p>
@@ -42,6 +45,7 @@ const All = () => {
             ) : (
                 <p>No Products Available</p>
             )}
+            <Footer />
         </div>
     );
 }
