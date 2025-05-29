@@ -40,33 +40,33 @@ const UpdateProduct = () => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setProductData( (prevData) => ({
-            prevData , [name] : value
+            ...prevData, [name] : value
         }));
         //Handle form submission
-        const handleSubmit = async (e) => {
-            e.preventDefault();
-            try {
-                const response = await fetch(`/api/admin/update-product/${productId}`, {
-                    method: "PATCH",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(productData)
-                });
-                const data = await response.json();
-                if (response.ok) {
-                    setMessage("Product updated successfully.");
-                    setTimeout( () => {
-                        navigate("/admin(products)");
-                    }, 2000);
-                } else {
-                    setMessage(data.message || "Failed to update the product.");
-                }
-            } catch (error) {
-                console.error("Error updating product:", error);
-                setMessage("An unexpected error ocuured. Please try again.");
+    }
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch(`/api/admin/update-product/${productId}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(productData)
+            });
+            const data = await response.json();
+            if (response.ok) {
+                setMessage("Product updated successfully.");
+                setTimeout( () => {
+                    navigate("/admin/products");
+                }, 2000);
+            } else {
+                setMessage(data.message || "Failed to update the product.");
             }
-        };
+        } catch (error) {
+            console.error("Error updating product:", error);
+            setMessage("An unexpected error ocuured. Please try again.");
+        }
     };
 
     return(
@@ -74,10 +74,11 @@ const UpdateProduct = () => {
             <div className="bg-white shadow-md rounded-lg p-6 w-full max-w-lg">
                 <h1 className="text-2x font-bold text-center mb-6">Update Product</h1>
                 { message && (
-                    <p className={` text-center text-sm font-semibold  ${message.include("Successfully")
-                    ? "text-green-600"
-                    : "text-red-600"
-                    }`}>
+                    <p className={`text-center text-sm font-semibold 
+                        ${message.includes("Successfully") 
+                        ? "text-green-600" 
+                        : "text-red-600"
+                        }`}>
                         { message }
                     </p>
                 ) }
@@ -92,51 +93,55 @@ const UpdateProduct = () => {
                             name="title"
                             value={productData.title}
                             onChange={handleChange}
-                            requires
+                            required
                             className="w-full border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500" 
                         />
                     </div>
-                    Price ?
+                    {/* Price  */}
                     <div className="md-4">
                         <label className="block text-gray-700 font-medium mb-2">
                             Price
                         </label>
                         <input
-                            type="text"
+                            type="number"
                             name="price"
                             value={productData.price}
                             onChange={handleChange}
-                            requires
+                            required
                             className="w-full border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500" 
                         />
                     </div>
+                    {/* Description  */}
                     <div className="md-4">
                         <label className="block text-gray-700 font-medium mb-2">
-                            Product Title
+                            Decription
+                        </label>
+                        <input
+                            type="textarea"
+                            name="description"
+                            value={productData.description}
+                            onChange={handleChange}
+                            required
+                            className="w-full border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500" 
+                        />
+                    </div>
+                    {/* Image URL  */}
+                    <div className="md-4">
+                        <label className="block text-gray-700 font-medium mb-2">
+                            Image URL
                         </label>
                         <input
                             type="text"
-                            name="title"
-                            value={productData.title}
+                            name="image"
+                            value={productData.image}
                             onChange={handleChange}
-                            requires
+                            required
                             className="w-full border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500" 
                         />
                     </div>
-                    <div className="md-4">
-                        <label className="block text-gray-700 font-medium mb-2">
-                            Product Title
-                        </label>
-                        <input
-                            type="text"
-                            name="title"
-                            value={productData.title}
-                            onChange={handleChange}
-                            requires
-                            className="w-full border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500" 
-                        />
-                    </div>
-
+                    <button type="submit" className="bg-blue-500 text-white py-3 rounded-lg font-semibold hover:bg-blue-600 transition">
+                        Update Product
+                    </button>
                 </form>
             </div>
         </div>
