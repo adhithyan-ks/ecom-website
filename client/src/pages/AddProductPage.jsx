@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const AddProduct = () => {
     const [formData, setFormData] = useState({
@@ -38,6 +40,7 @@ const AddProduct = () => {
     }
     return (
         <>
+            <Header />
             <div className="min-h-screen bg-gray-100 flex justify-center">
                 <div className="w-full max-w-lg bg-white rounded-lg shadow-md p-6">
                     <h1 className="text-2xl font-bold text-center mb-6">Add New Product</h1>
@@ -104,6 +107,7 @@ const AddProduct = () => {
                     </form>
                 </div>
             </div>
+            <Footer />
         </>
     )
 };
