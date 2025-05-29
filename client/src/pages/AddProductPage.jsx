@@ -38,7 +38,7 @@ const AddProduct = () => {
     }
     return (
         <>
-            <div className="min-h-4 bg-gray-100 flex justify-center">
+            <div className="min-h-screen bg-gray-100 flex justify-center">
                 <div className="w-full max-w-lg bg-white rounded-lg shadow-md p-6">
                     <h1 className="text-2xl font-bold text-center mb-6">Add New Product</h1>
                     {message && (
