@@ -22,7 +22,7 @@ const ProductPage = () => {
                 }
             } catch (error) {
                 setError("Something went wrong. Please try again.");
-                console.error("",);
+                console.error("Error fetching product:", error);
             }
         };
         if (productId) 
@@ -32,14 +32,14 @@ const ProductPage = () => {
         try {
             const response = await fetch("/api/user/add-to-cart", {
                 method: "POST",
-                header: {
+                headers: {
                     "Content-Type": "application/json"
                 },
-                body: json.stringify({ productId, quantity})
+                body: JSON.stringify({ productId, quantity })
             });
             const data = await response.json();
             if(response.ok) {
-                setCartMessage = `Added to cart : ${data.message || "Success"}`;
+                setCartMessage(`Added to cart : ${data.message || "Success"}`);
                 setTimeout( () => {
                     setCartMessage("");
                 }, 3000);
