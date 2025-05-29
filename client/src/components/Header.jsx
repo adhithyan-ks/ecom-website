@@ -4,7 +4,7 @@ import { useUser } from "../context/user.context";
 
 const Header = () => {
     const { user, signOut } = useUser();
-    console.log(user);
+    console.log("User:", user);
     const handleSignOut = async () => {
         try {
             const res = await fetch("/api/auth/sign-out");
@@ -23,10 +23,10 @@ const Header = () => {
                     <Link to="/" className="hover:text-gray-400 transition-colors">Home</Link>
                     <Link to="/products" className="hover:text-gray-400 transition-colors">Products</Link>
                     <Link to="/about" className="hover:text-gray-400 transition-colors">About</Link>
-                    { user?.isAdmin?(
-                        <div className="flex gap-6">
+                    { user?.isAdmin?
+                            (<div className="flex gap-6">
                             <Link to="/admin-all-products" className="hover: text-gray-400 transition-colors">All Products</Link>
-                            <Link to="/add-products" className="hover: text-gray-400 transition-colors">Add Product</Link>
+                            <Link to="/add-products" className="hover:text-gray-400 transition-colors">Add Product</Link>
 
                         </div>
                     ) : (

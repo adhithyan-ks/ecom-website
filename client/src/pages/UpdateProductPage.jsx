@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const UpdateProduct = () => {
     const { id: productId } = useParams();
@@ -70,6 +72,8 @@ const UpdateProduct = () => {
     };
 
     return(
+        <>
+        <Header />
         <div className="min-h-screen bg-gray-100 flex items-center justify-center">
             <div className="bg-white shadow-md rounded-lg p-6 w-full max-w-lg">
                 <h1 className="text-2x font-bold text-center mb-6">Update Product</h1>
@@ -145,6 +149,8 @@ const UpdateProduct = () => {
                 </form>
             </div>
         </div>
+        <Footer />
+        </>
     );
 }
 
