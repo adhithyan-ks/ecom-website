@@ -7,6 +7,7 @@ import { UserProvider } from "./context/user.context";
 import All from "./pages/AllProducts";
 import AddProduct from "./pages/AddProductPage";
 import UpdateProduct from "./pages/UpdateProductPage";
+import ProductPage from "./pages/ProductPage";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/sign-in" element={<SignInPage />}></Route>
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/products" element={<All />}></Route>
+        <Route path="/product/:id" element={<ProductPage />}></Route>
         <Route path="/admin/add-product" element={<AddProduct />}></Route>
         <Route path="/admin/update-product/:id" element={<UpdateProduct />}></Route>
       </Routes>
