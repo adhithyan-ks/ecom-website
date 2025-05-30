@@ -70,7 +70,7 @@ const ProductPage = () => {
     return (
         <>
             <Header />
-                <div className="bg-gray-100 py-8">
+                <div className="bg-gray-100 py-8 min-h-screen">
                     <div className="max-w-6xl mx-auto bg-white rounded-lg shadow-md p-6">
                         { cartMessage && (
                             <div className="text-center text-green-600 font-semibold mb-4">

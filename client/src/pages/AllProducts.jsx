@@ -25,8 +25,9 @@ const All = () => {
     console.log("Products:", products);
 
     return (
-        <div>
+        <>
             <Header />
+            <div className="min-h-screen">
             <h1 className="text-2xl font-bold text-center text-gray-800">All Products</h1>
             { products.length > 0 ? (
                 <div style = {{ width: "100vw", display: "flex", gap: "20px" }}>
@@ -45,8 +46,9 @@ const All = () => {
             ) : (
                 <p>No Products Available</p>
             )}
+            </div>
             <Footer />
-        </div>
+        </>
     );
 }
 
