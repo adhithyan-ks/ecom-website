@@ -6,7 +6,7 @@ const HomePage = () => {
     return (
         <div>
             <Header />
-            Hello World
+            <div className="min-h-screen"></div>
             <Footer />
         </div>
     )
