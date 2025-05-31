@@ -10,6 +10,7 @@ import UpdateProduct from "./pages/UpdateProductPage";
 import ProductPage from "./pages/ProductPage";
 import AdminAllProductsPage from "./pages/AdminAllProductsPage";
 import CartPage from "./pages/CartPage";
+import UserDetails from "./pages/UserDetails";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/products" element={<All />}></Route>
         <Route path="/product/:id" element={<ProductPage />}></Route>
         <Route path="/cart" element={<CartPage />}></Route>
+        <Route path="/userdetails" element={<UserDetails />}></Route>
         <Route path="/admin/all-products" element={<AdminAllProductsPage />}></Route>
         <Route path="/admin/add-product" element={<AddProduct />}></Route>
         <Route path="/admin/edit/product/:id" element={<UpdateProduct />}></Route>
