@@ -76,7 +76,8 @@ const CartPage = () => {
                                         <h2 className="text-xl font-semibold">{ item.product.title }</h2>
                                         <p className="text-gray-400">{ item.product.description }</p>
                                         <p className="mt-2">Price: ${ item.product.price }</p>
-                                        <p>Quantity: { item.product.quantity }</p>
+                                        <p>Quantity: { item.quantity }</p>
+
                                     </div>
                                     <div>
                                         <p className="text-lg font-bold">Total: ${ item.product.price * item.quantity }</p>
