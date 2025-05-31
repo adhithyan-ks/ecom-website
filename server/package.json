@@ -3,7 +3,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "npm start",
+    "start": "node index.js",
     "dev": "nodemon index.js"
   },
   "dependencies": {
