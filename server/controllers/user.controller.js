@@ -79,13 +79,30 @@ export const addToCart = async(req, res) => {
 export const getCart = async(req, res) => {
     try {
         const userId = req.user.id;
-        // const userId = "682ad879c70e706186bbf568";
         let cart = await Cart.findOne({ userId }).populate("products.product");
         if(!cart) {
             return res.json({ success:true, message: "Cart is empty" });
         }
         return res.status(200).json({ success: true, cart});
     } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+}
+// Clear cart
+export const clearCart = async(req, res) => {
+    const  userId = req.user.id;
+    if(!userId) {
+        return res.json({success: false, message: "User id is required!"});
+    }
+    try {
+        const deleteCart = await Cart.deleteOne({userId : userId});
+        if (!deleteCart) {
+            return res.status(400).json({success: false, message: "Failed to clear cart."});
+        }
+        res.status(200).json({success: true, message: "Cart cleared successfully"});
+    }
+    catch (error) {
         console.log(error);
         res.status(500).json({ message: "Internal Server Error" });
     }
