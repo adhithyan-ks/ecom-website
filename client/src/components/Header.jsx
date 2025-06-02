@@ -16,7 +16,7 @@ const Header = () => {
         }
     }
     return (
-        <header className="w-full bg-black text-white">
+        <header className="w-full bg-gray-150 text-black">
             <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
                 <Link to="/" className="text-2xl font-bold">Urban Woods</Link>
                 <nav className="flex gap-6 text-sm font-medium">
@@ -49,7 +49,7 @@ const Header = () => {
                                 onClick={() => handleSignOut()}>Sign Out</Link>
                         </div>
                     ) : (
-                        <Link to="/sign-in" className="px-4 py-2 bg-blue-500 text-white rounded-md shadow-md font-semibold hover:bg-blue-600 transition-colors">Sign In</Link>
+                        <Link to="/sign-in" className="px-4 py-2 bg-orange-400 text-white rounded-md shadow-md font-semibold hover:bg-orange-500 transition-colors">Sign In</Link>
                     )}
                 </div>
             </div>

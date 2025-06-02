@@ -75,7 +75,7 @@ const HomePage = () => {
                                         <p className="text-gray-600 text-sm mb-2">{ product.description }</p>
                                         <p className="text-gray-800 font-bold mb-4">Price: ${ product.price }</p>
                                         <button onClick={ () => addToCart(product._id)}
-                                        className="w-full bg-black text-white py-2 rounded-md font-semibold hover:bg-gray-800 transition-colors">
+                                        className="w-full bg-orange-400 text-white py-2 rounded-md font-semibold hover:bg-orange-500 transition-colors">
                                             Add to Cart
                                         </button>
                                     </div>
