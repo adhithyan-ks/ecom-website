@@ -25,8 +25,8 @@ const Header = () => {
                     <Link to="/about" className="hover:text-gray-400 transition-colors">About</Link>
                     {user?.isAdmin ?
                         (<div className="flex gap-6">
-                            <Link to="/admin-all-products" className="hover: text-gray-400 transition-colors">All Products</Link>
-                            <Link to="/add-products" className="hover:text-gray-400 transition-colors">Add Product</Link>
+                            <Link to="/admin/all-products" className="hover: text-gray-400 transition-colors">All Products</Link>
+                            <Link to="/admin/add-product" className="hover:text-gray-400 transition-colors">Add Product</Link>
 
                         </div>
                         ) : (
