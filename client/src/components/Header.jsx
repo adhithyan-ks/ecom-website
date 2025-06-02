@@ -25,12 +25,12 @@ const Header = () => {
                     <Link to="/about" className="hover:text-gray-400 transition-colors">About</Link>
                     {user?.isAdmin ?
                         (<div className="flex gap-6">
-                            <Link to="/admin/all-products" className="hover: text-gray-400 transition-colors">All Products</Link>
+                            <Link to="/admin/all-products" className="hover:text-gray-400 transition-colors">All Products</Link>
                             <Link to="/admin/add-product" className="hover:text-gray-400 transition-colors">Add Product</Link>
 
                         </div>
                         ) : (
-                            <Link to="/cart" className="hover: text-gray-400 transition-colors">Cart</Link>
+                            <Link to="/cart" className="hover:text-gray-400 transition-colors">Cart</Link>
                         )}
                 </nav>
                 <div>
