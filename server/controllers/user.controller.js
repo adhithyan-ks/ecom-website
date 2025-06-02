@@ -33,8 +33,9 @@ export const getProduct = async(req, res) => {
 //Cart
 export const addToCart = async(req, res) => {
     try {
-        // const userId = req.user.id;
-        const userId = "682ad879c70e706186bbf568";
+        const userId = req.user.id;
+        console.log("User id:", userId);
+        // const userId = "682ad879c70e706186bbf568";
 
         const { productId, quantity } = req.body;
         const product =  await Product.findById(productId);
@@ -43,7 +44,7 @@ export const addToCart = async(req, res) => {
         }
 
         //Find or create cart for the user
-        let cart = await Cart.findOne({ userId });
+        let cart = await Cart.findOne({ userId }).populate("products.product");
 
         if (!cart) {
             //Creates new cart if none exists
@@ -53,16 +54,17 @@ export const addToCart = async(req, res) => {
                 totalAmount: product.price * quantity
             });
         } else {
-            const existingProduct = cart.products.find(item => item.product.toString() === productId);
+            const existingProduct = cart.products.find(item => {
+                const productIdInCart = item.product._id?.toString() || item.product.toString();
+                return productIdInCart === productId;
+            });
         
             if (existingProduct) {
                 existingProduct.quantity += quantity;
             } else {
                 cart.products.unshift({ product: productId, quantity});
             }
-            cart.totalAmount = cart.products.reduce((total, item) => {
-                return total + (item.product.toString() === productId ? product.price : 0) * item.quantity;
-            }, 0);
+            cart.totalAmount += product.price * quantity;
         }
         await cart.save();
 
@@ -76,8 +78,8 @@ export const addToCart = async(req, res) => {
 //Get cart
 export const getCart = async(req, res) => {
     try {
-        // const userId = req.user.id;
-        const userId = "682ad879c70e706186bbf568";
+        const userId = req.user.id;
+        // const userId = "682ad879c70e706186bbf568";
         let cart = await Cart.findOne({ userId }).populate("products.product");
         if(!cart) {
             return res.json({ success:true, message: "Cart is empty" });
