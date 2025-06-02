@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { useUser } from "../context/user.context";
+
 const SignInPage = () => {
     const [formData, setFormData] = useState({
         email: "",
@@ -8,6 +10,9 @@ const SignInPage = () => {
     });
     const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(false);
+
+    const { signIn } = useUser(); 
+
     const navigate = useNavigate();
 
     // Input change handler
@@ -31,9 +36,11 @@ const SignInPage = () => {
                 body: JSON.stringify(formData)
             });
             const data = await res.json();
+            console.log("signin res:",data);
 
             // Handle server-side errors or success messages
             if (res.ok) { // Check if the response status is in the 200s
+                signIn(data.user);
                 setMessage(data.message || "Sign-up successful!");
                 navigate("/");
             } else {
