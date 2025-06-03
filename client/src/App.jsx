@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import PrivateRoute from "./components/PrivateRoute";
 import SignUpPage from "./pages/SignUpPage";
 import SignInPage from "./pages/SignInPage";
 import HomePage from "./pages/HomePage";
@@ -19,15 +20,19 @@ const App = () => {
       <Routes>
         <Route path="/sign-up" element={<SignUpPage />}></Route>
         <Route path="/sign-in" element={<SignInPage />}></Route>
+        <Route path="/about" element={<AboutPage />}></Route>
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/products" element={<All />}></Route>
         <Route path="/product/:id" element={<ProductPage />}></Route>
-        <Route path="/cart" element={<CartPage />}></Route>
-        <Route path="/about" element={<AboutPage />}></Route>
-        <Route path="/userdetails" element={<UserDetails />}></Route>
-        <Route path="/admin/all-products" element={<AdminAllProductsPage />}></Route>
-        <Route path="/admin/add-product" element={<AddProduct />}></Route>
-        <Route path="/admin/edit/product/:id" element={<UpdateProduct />}></Route>
+
+        <Route element={<PrivateRoute />}>
+          <Route path="/admin/all-products" element={<AdminAllProductsPage />}></Route>
+          <Route path="/admin/add-product" element={<AddProduct />}></Route>
+          <Route path="/admin/edit/product/:id" element={<UpdateProduct />}></Route>
+          <Route path="/cart" element={<CartPage />}></Route>
+          <Route path="/userdetails" element={<UserDetails />}></Route>
+        </Route>
+
       </Routes>
     </UserProvider>
     

@@ -2,12 +2,12 @@ import Product from "../models/product.model.js";
 
 //Create product
 export const addProduct = async(req, res) => {
-    // console.log(req.user);
-    // if (!req.user.isAdmin) {
-    //     return res.status(403).json({
-    //         message: "You are not allowed to access this API!"
-    //     });
-    // }
+     console.log(req.user);
+    if (!req.user.isAdmin) {
+        return res.status(403).json({
+            message: "You are not allowed to access this API!"
+        });
+    }
     const {
         title, price, description, image
     } = req.body;
