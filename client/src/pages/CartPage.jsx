@@ -12,7 +12,7 @@ const CartPage = () => {
             try {
                 const response = await fetch("/api/user/cart");
                 const data = await response.json();
-                console.log("cart data fetched :",data);
+                // console.log("cart data fetched :",data);
                 if (response.ok) {
                     setCart(data.cart);
                 } else {

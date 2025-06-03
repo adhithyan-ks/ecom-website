@@ -4,7 +4,7 @@ import { useUser } from "../context/user.context";
 
 const Header = () => {
     const { user, signOut } = useUser();
-    console.log("User:", user);
+    // console.log("User:", user);
     const handleSignOut = async () => {
         try {
             const res = await fetch("/api/auth/sign-out");
