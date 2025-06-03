@@ -16,7 +16,6 @@ const UserDetails = () => {
           const data = await response.json();
   
           if (response.ok) {
-              // Clear the cart state
               console.log("Cart cleared successfully");
           } else {
               console.error(data.message || "Failed to clear cart");
