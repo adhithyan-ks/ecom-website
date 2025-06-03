@@ -52,23 +52,52 @@ const CartPage = () => {
     
     if (loading) {
         return (
-            <div className="flex justify-center items-center min-h-screen bg-gray-100">
-                <p>Loading..</p>
-            </div>
+            <>
+            <Header />
+                <div className="min-h-screen bg-gray-100">
+                    <div className="max-w-4xl mx-auto py-8">
+                        <h1 className="text-3xl font-bold pb-4 mb-6">Your Cart</h1>
+                        <div className="flex justify-center items-center">
+                            <p>Loading..</p>
+                        </div>
+                    </div>
+                </div>
+            <Footer />
+            </>
+            
         )
     }
     if (error) {
         return (
-            <div className="flex justify-center items-center h-screen bg-black text-white">
-                <p>{ error }</p>
-            </div>
+            <>
+            <Header />
+                <div className="min-h-screen bg-gray-100">
+                    <div className="max-w-4xl mx-auto py-8">
+                        <h1 className="text-3xl font-bold pb-4 mb-6">Your Cart</h1>
+                        <div className="flex justify-center items-center h-screen bg-black text-white">
+                            <p>{ error }</p>
+                        </div>
+                    </div>
+                </div>
+            <Footer />
+            </>
         )
     }
     if (!cart || cart.products.length === 0) {
         return (
-            <div className="flex justify-center items-center h-screen bg-black text-white">
-                <p>Your cart is empty</p>
-            </div>
+            <>
+            <Header />
+                <div className="min-h-screen bg-gray-100">
+                    <div className="max-w-4xl mx-auto py-8">
+                        <h1 className="text-3xl font-bold pb-4 mb-6">Your Cart</h1>
+                        <div className="flex justify-center items-center">
+                            <p>Your cart is empty</p>
+                        </div>
+                    </div>
+                </div>
+            <Footer />
+            </>
+            
         )
     }
     return (
@@ -118,7 +147,7 @@ const CartPage = () => {
                     </Link>
                     <Link
                         to="#"
-                        className="mx-auto px-5 py-1 font-semibold bg-red-500 text-white rounded-md shadow-md"
+                        className="mx-auto ml-4 px-5 py-1 font-semibold bg-red-500 text-white rounded-md shadow-md"
                         onClick={() => clearCart()}>
                             Clear Cart
                     </Link>
