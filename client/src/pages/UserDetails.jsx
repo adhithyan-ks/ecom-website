@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import Header from "../components/Header";
+import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 const UserDetails = () => {
@@ -8,6 +8,25 @@ const UserDetails = () => {
     const [ address, setAddress ] = useState("");
     const [ orderSuccess, setOrderSuccess ] = useState(false);
 
+    const clearCart = async () => {  
+      try {
+          const response = await fetch("/api/user/clear-cart", {
+              method: "DELETE",
+          });
+          const data = await response.json();
+  
+          if (response.ok) {
+              // Clear the cart state
+              console.log("Cart cleared successfully");
+          } else {
+              console.error(data.message || "Failed to clear cart");
+          }
+      } catch (error) {
+          console.error("Error clearing cart:", error);
+          alert("Error clearing cart. Please try again.");
+      }
+  };
+
     const isFormValid = name.trim() && email.trim() && address.trim();
     const handleByNow = () => {
         if (isFormValid) {
@@ -15,11 +34,13 @@ const UserDetails = () => {
             setName("");
             setEmail("");
             setAddress("");
+            clearCart();
         }
     };
       return (
   <>
     {/* <Header /> */}
+    <Header />
     <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded shadow">
       <h2 className="text-2xl font-bold mb-6 text-center">User Details</h2>
       
