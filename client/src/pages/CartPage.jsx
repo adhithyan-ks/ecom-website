@@ -27,6 +27,29 @@ const CartPage = () => {
         };
         fetchCart();
     }, []);
+    const clearCart = async () => {
+        const confirmClearCart = window.confirm("Are you sure you want to clear cart?");
+        if (!confirmClearCart) return;
+    
+        try {
+            const response = await fetch("/api/user/clear-cart", {
+                method: "DELETE",
+            });
+            const data = await response.json();
+    
+            if (response.ok) {
+                // Clear the cart state
+                setCart({ products: [], totalAmount: 0 });
+                console.log("Cart cleared successfully");
+            } else {
+                console.error(data.message || "Failed to clear cart");
+            }
+        } catch (error) {
+            console.error("Error clearing cart:", error);
+            alert("Error clearing cart. Please try again.");
+        }
+    };
+    
     if (loading) {
         return (
             <div className="flex justify-center items-center min-h-screen bg-gray-100">
@@ -92,6 +115,12 @@ const CartPage = () => {
                     </div>
                     <Link to="/userdetails">
                         <button className="mx-auto px-5 py-1 font-semibold bg-black text-white rounded-md shadow-md">Checkout</button>
+                    </Link>
+                    <Link
+                        to="#"
+                        className="mx-auto px-5 py-1 font-semibold bg-red-500 text-white rounded-md shadow-md"
+                        onClick={() => clearCart()}>
+                            Clear Cart
                     </Link>
                 </div>
             </div>
